@@ -4,8 +4,8 @@ import SingleTest from './SingleTest';
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Drivers = () => {
-  const cacheKey = 'http://localhost:3001/drivers';
-  const { data, error } = useSWR('http://localhost:3001/drivers', fetcher);
+  const cacheKey = 'http://localhost:3001/orders';
+  const { data, error } = useSWR('http://localhost:3001/orders', fetcher);
   console.log(data, error);
 
   if (error) return <div>failed to load</div>;
@@ -25,9 +25,6 @@ const Drivers = () => {
       </div>
       {
         data.map((driver) => <SingleTest key={driver.id} data={driver} cache={cacheKey} />)
-        /*         data ?
-
-          : <p>not yet</p> */
       }
     </div>
   );

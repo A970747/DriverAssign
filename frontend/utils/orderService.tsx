@@ -7,5 +7,6 @@ export const deleteOrder = async (id) => {
       'Content-Type': 'application/json',
     },
   });
-  console.log(res);
+
+  return res;
 };

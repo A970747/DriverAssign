@@ -12,7 +12,7 @@ const SingleOrder = ({ data }: Props) => {
       <Link href={`/orders/${data.id}`}>
         <a className="flex flex-col gap-2 border-2 border-gray-500 rounded p-2 md:grid md:grid-cols-10">
           <p className="justify-self-center"><span className="inline md:hidden">OrderID: </span>{data.id}</p>
-          <p><span className="inline md:hidden">Driver: </span>{data.driverId || 'TBD'}</p>
+          <p><span className="inline md:hidden">Driver: </span>{data.driver || 'TBD'}</p>
           <p><span className="inline md:hidden">Start City: </span>{data.startCity}</p>
           <p><span className="inline md:hidden">End City: </span>{data.endCity}</p>
           <p><span className="inline md:hidden">Start Date: </span>{format(new Date(data.startDate), 'dd/MM/yy HH:mm')}</p>

@@ -13,7 +13,7 @@ export type Order = {
   description: string,
   cost: number,
   distance: number,
-  driverId: number | null,
+  driver: number | null,
   endCity: string,
   endDate: string,
   id: number,

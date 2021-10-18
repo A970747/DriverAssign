@@ -33,44 +33,8 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "driverId": null,
-      "startCity": "Toronto",
-      "endCity": "Chicago",
-      "startDate": "2021-10-20T12:00:00",
-      "endDate": "2021-10-22T08:00:00",
-      "distance": 500,
-      "description": "Construction Materials",
-      "revenue": 500,
-      "cost": 50
-    },
-    {
-      "id": 2,
-      "driverId": null,
-      "startCity": "Toronto",
-      "endCity": "Chicago",
-      "startDate": "2021-10-23T12:00:00",
-      "endDate": "2021-10-25T08:00:00",
-      "distance": 500,
-      "description": "Construction Materials",
-      "revenue": 500,
-      "cost": 50
-    },
-    {
-      "id": 3,
-      "driverId": null,
-      "startCity": "Toronto",
-      "endCity": "Montreal",
-      "startDate": "2021-10-20T08:00:00",
-      "endDate": "2021-10-20T12:00:00",
-      "distance": 500,
-      "description": "Wood and Lumber",
-      "revenue": 500,
-      "cost": 50
-    },
-    {
       "id": 4,
-      "driverId": null,
+      "driver": null,
       "startCity": "Montreal",
       "endCity": "Toronto",
       "startDate": "2021-10-20T08:00:00",
@@ -82,7 +46,7 @@
     },
     {
       "id": 5,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
@@ -94,7 +58,7 @@
     },
     {
       "id": 6,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
@@ -106,7 +70,7 @@
     },
     {
       "id": 7,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
@@ -118,19 +82,7 @@
     },
     {
       "id": 8,
-      "driverId": null,
-      "startCity": "Toronto",
-      "endCity": "Chicago",
-      "startDate": "2021-10-20T08:00:00",
-      "endDate": "2021-10-20T08:00:00",
-      "distance": 500,
-      "description": "Farm Supplies",
-      "revenue": 500,
-      "cost": 50
-    },
-    {
-      "id": 9,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
@@ -142,7 +94,7 @@
     },
     {
       "id": 10,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
@@ -154,7 +106,7 @@
     },
     {
       "id": 11,
-      "driverId": null,
+      "driver": null,
       "startCity": "Toronto",
       "endCity": "Chicago",
       "startDate": "2021-10-20T08:00:00",
