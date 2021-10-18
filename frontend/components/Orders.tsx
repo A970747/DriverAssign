@@ -1,3 +1,4 @@
+import { Order } from '../interfaces';
 import useData from '../utils/useData';
 import SingleOrder from './SingleOrder';
 
@@ -7,7 +8,7 @@ const Orders = () => {
 
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
-  console.log('orders', data);
+
   return (
     <div>
       <div className="hidden md:grid grid-cols-10 justify-around gap-2 border-b-2 border-black p-2">
@@ -22,7 +23,7 @@ const Orders = () => {
         <p>Cost</p>
       </div>
       {
-        data.map((order) => {
+        data.map((order: Order) => {
           return <SingleOrder key={order.id} data={order} />;
         })
       }
