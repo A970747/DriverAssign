@@ -1,15 +1,12 @@
-import useSWR from 'swr';
+import useData from '../utils/useData';
 import SingleOrder from './SingleOrder';
-
-// Fetches from API, NextJS autmatically polyfills the fetch function.
-const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Orders = () => {
   //todo Add , { refreshInterval: 5 } to useSWR to get data refreshing every 5 seconds to simulate closer to real time.
-  const { data, error } = useSWR('http://localhost:3001/orders', fetcher);
+  const { data, isError, isLoading } = useData('orders');
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  if (isError) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
   console.log('orders', data);
   return (
     <div>

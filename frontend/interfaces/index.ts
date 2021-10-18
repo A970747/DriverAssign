@@ -21,3 +21,10 @@ export type Order = {
   startCity: string,
   startDate: string,
 }
+
+export type Driver = {
+  id: number,
+  firstName: string,
+  lastName: string,
+  fullName: string
+}

@@ -3,7 +3,7 @@ import { Router } from 'next/dist/client/router';
 import NProgress from 'nprogress';
 import React from 'react';
 import Layout from '../components/Layout';
-import '../styles/index.css';
+import '../styles/baseStyles.css';
 import '../styles/nprogress.css';
 
 
