@@ -5,7 +5,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Drivers = () => {
   const cacheKey = 'http://localhost:3001/orders';
-  const { data, error } = useSWR('http://localhost:3001/orders', fetcher);
+  const { data, error } = useSWR(cacheKey, fetcher);
   console.log(data, error);
 
   if (error) return <div>failed to load</div>;
@@ -24,7 +24,7 @@ const Drivers = () => {
         <p>Cost</p>
       </div>
       {
-        data.map((driver) => <SingleTest key={driver.id} data={driver} cache={cacheKey} />)
+        data.map((driver) => <SingleTest key={driver.id} data={driver} cacheKey={cacheKey} />)
       }
     </div>
   );

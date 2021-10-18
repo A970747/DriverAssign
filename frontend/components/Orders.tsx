@@ -5,6 +5,7 @@ import SingleOrder from './SingleOrder';
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Orders = () => {
+  //todo Add , { refreshInterval: 5 } to useSWR to get data refreshing every 5 seconds to simulate closer to real time.
   const { data, error } = useSWR('http://localhost:3001/orders', fetcher);
 
   if (error) return <div>failed to load</div>;

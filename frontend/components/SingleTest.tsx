@@ -1,23 +1,24 @@
 import Link from 'next/link';
-import useSWR, { useSWRConfig } from 'swr';
+import useSWR from 'swr';
 import { Order } from '../interfaces';
 import { deleteOrder } from '../utils/orderService';
 
 type Props = {
   data: Order
-  cache: string
+  cacheKey: string
 }
 
-const SingleTest = ({ data, cache }: Props) => {
-  const { mutate } = useSWRConfig();
-  const swr = useSWR(cache);
+const SingleTest = ({ data, cacheKey }: Props) => {
+  const swr = useSWR(cacheKey);
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const newData = swr?.data.filter((item) => item.id != data.id);
-    mutate(cache, newData);
-    await deleteOrder(data.id);
-    mutate(cache);
+    if (confirm('Are you sure you want to delete this item?')) {
+      const newData = swr?.data.filter((item) => item.id != data.id);
+      swr.mutate(newData);
+      await deleteOrder(data.id);
+      swr.mutate();
+    }
   };
 
   return (
