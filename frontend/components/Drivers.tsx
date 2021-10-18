@@ -3,7 +3,7 @@ import useData from '../utils/useData';
 import SingleDriver from './SingleDriver';
 
 const Drivers = () => {
-  const { data, isError, isLoading } = useData('drivers');;
+  const { data, isError, isLoading } = useData('drivers');
 
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
