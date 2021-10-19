@@ -1,4 +1,4 @@
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Driver, Order } from '../interfaces';
 import useData from '../utils/useData';
 
@@ -7,8 +7,9 @@ const Planning = () => {
   const orders = useData('orders');
   console.log(drivers.data, orders.data);
 
-  function onDragEnd() {
-    console.log('Drag ends');
+  function onDragEnd(results: DropResult) {
+    const { source, destination } = results;
+    console.log(source, destination);
   }
 
   if (orders.isLoading) return <p>Orders still loading</p>;
@@ -39,13 +40,13 @@ const Planning = () => {
             )
           }
         </Droppable>
-        <div>
+        <div className="flex flex-col justify-center border-8 border-blue-100">
           {
             drivers.data.map((driver: Driver) => (
               <Droppable key={driver.id} droppableId={driver.id.toString()}>
                 {
                   (provided) => (
-                    <div className="border-8 border-blue-500" ref={provided.innerRef} {...provided.droppableProps}>
+                    <div className="border-8 border-blue-500 flex-auto" ref={provided.innerRef} {...provided.droppableProps}>
                       <p>{driver.firstName}</p>
                       {
                         orders.data.map((order: Order) => {
@@ -61,7 +62,7 @@ const Planning = () => {
           }
         </div>
       </div>
-    </DragDropContext>
+    </DragDropContext >
   );
 };
 
