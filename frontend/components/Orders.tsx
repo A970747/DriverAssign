@@ -24,7 +24,7 @@ const Orders = () => {
       </div>
       {
         data.map((order: Order) => {
-          return <SingleOrder key={order.id} data={order} />;
+          return <SingleOrder key={order.id} order={order} />;
         })
       }
     </div>

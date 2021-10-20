@@ -15,9 +15,9 @@ const Layout = ({ children }: Props) => (
       <link rel="icon" href="/favicon.png" />
     </Head>
     <Header />
-    <div className="max-w-screen-lg my-0 mx-auto p-8">
+    <main className="max-w-screen-xl my-0 mx-auto p-8">
       {children}
-    </div>
+    </main>
   </div>
 );
 

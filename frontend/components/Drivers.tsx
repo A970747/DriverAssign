@@ -13,7 +13,7 @@ const Drivers = () => {
         <p>Drivers</p>
       </div>
       {
-        data.map((driver: Driver) => <SingleDriver key={driver.id} data={driver} />)
+        data.map((driver: Driver) => <SingleDriver key={driver.id} driver={driver} />)
       }
     </div>
   );

@@ -4,6 +4,8 @@
 //
 // import { User } from 'path/to/interfaces';
 
+import { DropResult } from 'react-beautiful-dnd';
+
 export type User = {
   id: number
   name: string
@@ -27,4 +29,8 @@ export type Driver = {
   firstName: string,
   lastName: string,
   fullName: string
+}
+
+export type DropHelper = {
+  dropHelper: (a: DropResult) => void
 }
