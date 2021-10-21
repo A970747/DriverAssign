@@ -13,7 +13,7 @@ export const DropCardOrder = ({ order, driver }: Props) => {
   const endTime = format(new Date(order.endDate), 'HH:mm');
 
   return (
-    <div className="grid grid-cols-3 p-2 gap-4 justify-items-center">
+    <div className="grid grid-cols-3 p-2 justify-items-center">
       <p>OrderID: {order.id}</p>
       <p>Org: {order.startCity}</p>
       <p>Dest: {order.endCity}</p>

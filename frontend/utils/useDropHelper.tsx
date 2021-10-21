@@ -1,34 +1,46 @@
 import { useState } from 'react';
-import { DropResult } from 'react-beautiful-dnd';
+import { DragStart, DropResult } from 'react-beautiful-dnd';
+import { updateOrder } from './orderService';
 import useData from './useData';
 
 type Return = {
-  setterino: (arg: any) => void,
+  getDraggedItem: (arg: any) => void,
   dropHelper: (results: DropResult) => void,
 }
 
 export default function useDropHelper(): Return {
-  const [draggedId, setDraggedId] = useState('');
-  const { data: order } = useData('orders', draggedId);
+  const [droppedOrderId, setDroppedOrderId] = useState('');
+  const { data: order } = useData('orders', droppedOrderId);
 
-  //! rename this function used to test
-  function setterino(arg: any) {
-    console.log(arg);
-    setDraggedId(arg.draggableId);
+  function getDraggedItem(arg: DragStart) {
+    setDroppedOrderId(arg.draggableId);
   }
 
-  function dropHelper(results: DropResult): void {
-    const { destination: { droppableId: driverId } } = results;
-    console.log(driverId, typeof driverId);
-    console.log(draggedId);
-    console.log(order);
+  async function dropHelper(results: DropResult) {
+    const { source, destination } = results;
+    // Check source.droppableId against destination.droppableId, if they're not the same then put the destination.droppableId as driver value in order.
+    //
+
+    if (source.droppableId != destination.droppableId) {
+      const updatedId = (destination.droppableId == 'unassigned') ? '' : parseInt(destination.droppableId);
+      const updatedOrder = { ...order, driver: updatedId };
+
+      try {
+        console.log(order);
+        const res = await updateOrder(order.id, updatedOrder);
+        console.log({ res });
+      } catch {
+        console.log('something didnt go');
+      }
+    }
+
     //order is the actual order.
-    //draggedId is the order being dragged
+    //droppedOrderId is the order being dragged
     //use the destination to set the new driver id, pass that object to the update orders
   };
 
   return {
-    setterino,
+    getDraggedItem,
     dropHelper,
   };
 }

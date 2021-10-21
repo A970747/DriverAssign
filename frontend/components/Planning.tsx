@@ -7,12 +7,15 @@ import { DropCardOrder } from './DropCardOrder';
 const Planning = () => {
   const drivers = useData('drivers');
   const orders = useData('orders');
-  const { dropHelper, setterino } = useDropHelper();
+  const { dropHelper, getDraggedItem } = useDropHelper();
 
-  if (orders.isLoading) return <p>Orders still loading</p>;
-  if (drivers.isLoading) return <p>okay</p>;
+  if (orders.isLoading || drivers.isLoading) return <p>Loading...</p>;
+  if (orders.isError || drivers.isError) return <div>failed to load</div>;
+
+  //todo The index here is an issue because it affects whether the package knows to shift stuff around in the container.
+  
   return (
-    <DragDropContext onDragEnd={dropHelper} onDragStart={setterino}>
+    <DragDropContext onDragEnd={dropHelper} onDragStart={getDraggedItem}>
       <div className="grid grid-cols-2 border-2 border-green-500">
         <Droppable droppableId="unassigned">
           {
