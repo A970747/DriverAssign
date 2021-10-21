@@ -10,6 +10,7 @@ Medium:
   - Implement ability to update driver details.
   - Include orders driver is scheduled on in ind. driver page.
   - Implement ability to create new orders.
+  - When no orders, add some text to various pages indicating so and link to adding drivers/orders.
 
 Low:
   - Implement map on orders tab using OSM/Open layer so when you show an ind. order it displays the map with org/dest.
