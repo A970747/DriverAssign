@@ -6,7 +6,7 @@ type Props = {
   order: Order
 }
 
-const SingleOrder = ({ order }: Props) => {
+const OrdersCard = ({ order }: Props) => {
   return (
     <div className="my-2 hover:shadow-md hover:bg-blue-50">
       <Link href={`/orders/${order.id}`}>
@@ -26,4 +26,4 @@ const SingleOrder = ({ order }: Props) => {
   );
 };
 
-export default SingleOrder;
+export default OrdersCard;

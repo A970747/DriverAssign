@@ -18,4 +18,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
+MyApp.getInitialProps = async function ({ Component, ctx }: any) {
+  let pageProps: any = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  pageProps.query = ctx.query;
+  return { pageProps };
+};
+
 export default MyApp;

@@ -2,7 +2,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Driver, Order } from '../interfaces';
 import useData from '../utils/useData';
 import useDropHelper from '../utils/useDropHelper';
-import { OrderCard } from './OrderCard';
+import { DropCardOrder } from './DropCardOrder';
 
 const Planning = () => {
   const drivers = useData('drivers');
@@ -24,8 +24,8 @@ const Planning = () => {
                     return <Draggable key={order.id} index={index} draggableId={order.id.toString()} >
                       {
                         (provided, snapshot) => (
-                          <div className="border-2" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <OrderCard key={order.id} order={order} />
+                          <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <DropCardOrder key={order.id} order={order} driver="Unassigned" />
                           </div>
                         )
                       }
@@ -52,8 +52,8 @@ const Planning = () => {
                               <Draggable key={order.id} index={index} draggableId={order.id.toString()} >
                                 {
                                   (provided, snapshot) => (
-                                    <div className="border-2" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                      <OrderCard key={order.id} order={order} />
+                                    <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                      <DropCardOrder key={order.id} order={order} driver={driver.fullName} />
                                     </div>
                                   )
                                 }

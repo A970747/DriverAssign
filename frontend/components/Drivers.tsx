@@ -1,6 +1,6 @@
 import { Driver } from '../interfaces';
 import useData from '../utils/useData';
-import SingleDriver from './SingleDriver';
+import SingleDriver from './DriversCard';
 
 const Drivers = () => {
   const { data, isError, isLoading } = useData('drivers');

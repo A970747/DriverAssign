@@ -1,6 +1,6 @@
 import { Order } from '../interfaces';
 import useData from '../utils/useData';
-import SingleOrder from './SingleOrder';
+import SingleOrder from './OrdersCard';
 
 const Orders = () => {
   //todo Add , { refreshInterval: 5 } to useSWR to get data refreshing every 5 seconds to simulate closer to real time.
