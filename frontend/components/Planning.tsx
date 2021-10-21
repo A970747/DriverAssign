@@ -7,12 +7,12 @@ import { DropCardOrder } from './DropCardOrder';
 const Planning = () => {
   const drivers = useData('drivers');
   const orders = useData('orders');
-  const { dropHelper } = useDropHelper();
+  const { dropHelper, setterino } = useDropHelper();
 
   if (orders.isLoading) return <p>Orders still loading</p>;
   if (drivers.isLoading) return <p>okay</p>;
   return (
-    <DragDropContext onDragEnd={dropHelper}>
+    <DragDropContext onDragEnd={dropHelper} onDragStart={setterino}>
       <div className="grid grid-cols-2 border-2 border-green-500">
         <Droppable droppableId="unassigned">
           {
@@ -21,7 +21,7 @@ const Planning = () => {
                 <span className="text-center">Unassigned Orders</span>
                 {
                   orders.data.filter((order: Order) => !order.driver).map((order: Order, index: number) => {
-                    return <Draggable key={order.id} index={index} draggableId={order.id.toString()} >
+                    return <Draggable key={order.id} index={order.id} draggableId={order.id.toString()} >
                       {
                         (provided, snapshot) => (
                           <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
@@ -49,7 +49,7 @@ const Planning = () => {
                         {
                           orders.data.map((order: Order, index: number) => {
                             return (order.driver == driver.id) ?
-                              <Draggable key={order.id} index={index} draggableId={order.id.toString()} >
+                              <Draggable key={order.id} index={order.id} draggableId={order.id.toString()} >
                                 {
                                   (provided, snapshot) => (
                                     <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
