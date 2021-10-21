@@ -2,8 +2,8 @@ import Nav from './Nav';
 
 export default function Header() {
   return (
-    <header className="border-b-8 border-black">
-      <div className="grid grid-cols-autoFr px-10">
+    <header className="flex justify-center border-b-8 border-black">
+      <div className="flex justify-between max-w-screen-xl w-full px-8">
         <h1 className="flex items-center text-4xl" >
           Driver Assigner
         </h1>

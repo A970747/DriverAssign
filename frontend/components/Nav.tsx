@@ -4,7 +4,7 @@ export default function Nav() {
   const anchorStyle = 'flex items-center hover:bg-gray-100 hover:underline uppercase text-base cursor-pointer px-4 py-4 transition-colors duration-7000 ease-out';
 
   return (
-    <nav className="flex justify-self-end text-3xl my-0 mx-0">
+    <nav className="flex text-3xl my-0 mx-0">
       <Link href="/planning">
         <a className={anchorStyle}>Planning</a>
       </Link>

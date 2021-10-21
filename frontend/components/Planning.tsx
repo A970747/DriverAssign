@@ -44,7 +44,7 @@ const Planning = () => {
                 {
                   (provided) => (
                     <div className="border-2 border-blue-500 flex-auto" ref={provided.innerRef} {...provided.droppableProps}>
-                      <p className="text-xl text-center">{driver.firstName} {driver.id}</p>
+                      <p className="text-xl text-center">{driver.firstName} {driver.id} Make these links to driver/[id]</p>
                       <div className="flex flex-col gap-2 p-2">
                         {
                           orders.data.map((order: Order, index: number) => {
