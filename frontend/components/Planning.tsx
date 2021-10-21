@@ -13,7 +13,6 @@ const Planning = () => {
   if (orders.isError || drivers.isError) return <div>failed to load</div>;
 
   //todo The index here is an issue because it affects whether the package knows to shift stuff around in the container.
-  
   return (
     <DragDropContext onDragEnd={dropHelper} onDragStart={getDraggedItem}>
       <div className="grid grid-cols-2 border-2 border-green-500">

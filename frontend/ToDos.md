@@ -3,6 +3,7 @@ To Do List:
 High:
   - Fix index of items in different containers in Planning so that the shifting works
   - Implement ability to update Rev/Cost on orders on ind. Order page
+  - Add province to the start/end dest where orders are shown.
 
 Medium:
   - Implement ability to change ALL Order fields.

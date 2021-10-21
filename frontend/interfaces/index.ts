@@ -17,10 +17,14 @@ export type Order = {
   distance: number,
   driver: number | null,
   endCity: string,
+  endProv: string,
+  endCountry: string,
   endDate: string,
   id: number,
   revenue: number,
   startCity: string,
+  startProv: string,
+  startCountry: string,
   startDate: string,
 }
 
