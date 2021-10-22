@@ -1,12 +1,12 @@
-const info = (...params) => {
+const infoMessage = (...params: any) => {
   console.log(...params);
 };
 
-const error = (...params) => {
+const errorMessage = (...params: any) => {
   console.error(...params);
 };
 
-module.exports = {
-  info,
-  error,
+export default {
+  infoMessage,
+  errorMessage,
 };

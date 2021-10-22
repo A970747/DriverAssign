@@ -1,6 +1,15 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "strict": true,
+    "sourceMap": true,
     "checkJs": true,
     "noEmit": true,
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
 }

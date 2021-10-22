@@ -1,30 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import app from "./app";
+import db from "./config/db";
 
-const app = express();
+//use db.authenticate when this goes to postgres
 
-app.use(bodyParser.json());
-
-app.get('/api/contacts', (req, res) => {
-  // TODO: retreive contacts and send to requester
+db.sync().then(() => {
+  console.log("Connected to DB");
 });
 
-app.post('/api/contacts', (req, res) => {
-  const { firstName, lastName, phone } = req.body
-  // TODO: create contact
-});
+const port = 3333;
 
-app.delete('/api/contacts/:id', (req, res) => {
-  const id = parseInt(req.params.id)
-  // TODO: find and delete contact by id
-});
-
-app.put('/api/contacts/:id', (req, res) => {
-  const id = parseInt(req.params.id)
-  const { firstName, lastName, phone } = req.body
-  // TODO: find and update contact by id
-});
-
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });

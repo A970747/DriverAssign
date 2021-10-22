@@ -1,14 +1,15 @@
-const logger = require('./logger');
+import { NextFunction, Request, Response } from "express";
+import logger from './logger';
 
-const requestLogger = (req, res, next) => {
-  logger.info('Method: ', req.method);
-  logger.info('Path: ', req.path);
-  logger.info('Body: ', req.body);
-  logger.info('---');
+const requestLogger = (req: Request, res: Response, next: NextFunction) => {
+  logger.infoMessage('Method: ', req.method);
+  logger.infoMessage('Path: ', req.path);
+  logger.infoMessage('Body: ', req.body);
+  logger.infoMessage('---');
   return next();
 };
 
-const tokenExtractor = (req, res, next) => {
+const tokenExtractor = (req: Request, res: Response, next: NextFunction) => {
   const authorization = req.get('Authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     req.body.token = authorization.substring(7);
@@ -17,26 +18,26 @@ const tokenExtractor = (req, res, next) => {
   return next();
 };
 
-const unknownEndpoint = (req, res) => {
+const unknownEndpoint = (req: Request, res: Response) => {
   res.status(404).send({ error: 'Unknown endpoint' });
 };
 
-const errorHandler = (error, req, res, next) => {
-  if (error.name === 'CastError') {
+const errorHandler = (req: Request, res: Response, next: NextFunction) => {
+  if (Error.name === 'CastError') {
     return res.status(400).send({ error: 'Malformatted  ID' });
   };
-  if (error.name === 'ValidationError') {
-    return res.status(400).json({ error: error.message });
+  if (Error.name === 'ValidationError') {
+    return res.status(400).json({ error: Error });
   };
-  if (error.name === 'JsonWebTokenError') {
+  if (Error.name === 'JsonWebTokenError') {
     return res.status(401).json({ error: 'invalid token' });
   };
-  logger.error(error.message);
+  logger.errorMessage(Error);
 
-  return next(error);
+  return next(Error);
 };
 
-module.exports = {
+export default {
   requestLogger,
   tokenExtractor,
   unknownEndpoint,
