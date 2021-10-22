@@ -7,8 +7,9 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const sequelize_1 = require("sequelize");
 dotenv_1.default.config();
 let db;
+const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_IP}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 if (process.env.NODE_ENV === 'production') {
-    db = new sequelize_1.Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_IP}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
+    db = new sequelize_1.Sequelize(connectionString);
     try {
         db.authenticate().then(() => console.log('Connection has been established successfully.'));
     }
