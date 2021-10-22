@@ -22,7 +22,7 @@ class DriverController {
   }
 
   async addDriver(req: Request, res: Response) {
-    //const id = uuidv4();
+    // const id = uuidv4();
     try {
       const record = await DriverInstance.create({ ...req.body });
       return res.json({ record, message: "Successfully created driver" });
