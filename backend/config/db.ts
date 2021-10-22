@@ -3,9 +3,10 @@ import { Sequelize } from 'sequelize';
 dotenv.config()
 
 let db: any;
+const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_IP}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
 if (process.env.NODE_ENV === 'production') {
-  db = new Sequelize(`postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_IP}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
+  db = new Sequelize(connectionString);
   try {
     db.authenticate().then(() => console.log('Connection has been established successfully.'));
   } catch (error) {
