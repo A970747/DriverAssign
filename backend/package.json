@@ -5,9 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn index.ts",
-    "server": "json-server -p3001 --watch ./json-server-db/db.json",
-    "start": "ts-node index.ts",
-    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix"
+    "start": "node dist/src/index.js",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "server": "json-server -p3001 --watch ./json-server-db/db.json"
   },
   "author": "",
   "license": "ISC",
