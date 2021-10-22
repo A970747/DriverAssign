@@ -1,6 +1,6 @@
 import { Driver } from '../interfaces';
 import useData from '../utils/useData';
-import SingleDriver from './SingleDriver';
+import SingleDriver from './DriversCard';
 
 const Drivers = () => {
   const { data, isError, isLoading } = useData('drivers');
@@ -13,7 +13,7 @@ const Drivers = () => {
         <p>Drivers</p>
       </div>
       {
-        data.map((driver: Driver) => <SingleDriver key={driver.id} data={driver} />)
+        data.map((driver: Driver) => <SingleDriver key={driver.id} driver={driver} />)
       }
     </div>
   );

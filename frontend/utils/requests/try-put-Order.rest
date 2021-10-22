@@ -1,0 +1,15 @@
+PUT http://localhost:3001/orders/2
+Content-Type: application/json
+
+{
+  "id": 2,
+  "driver": 5,
+  "startCity": "Toronto",
+  "endCity": "Chicago",
+  "startDate": "2021-10-23T12:00:00",
+  "endDate": "2021-10-25T08:00:00",
+  "distance": 500,
+  "description": "Construction Materials",
+  "revenue": 500,
+  "cost": 50
+}

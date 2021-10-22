@@ -1,29 +1,19 @@
-import { format } from 'date-fns';
-import Link from 'next/link';
-import { Order } from '../interfaces';
+import useData from '../utils/useData';
 
 type Props = {
-  order: Order
+  id: string
 }
 
-const SingleOrder = ({ order }: Props) => {
+export const SingleOrder = ({ id }: Props) => {
+  const { data, isLoading, isError } = useData('orders', id);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Failed to load</p>;
   return (
-    <div className="my-2 hover:shadow-md hover:bg-blue-50">
-      <Link href={`/orders/${order.id}`}>
-        <a className="flex flex-col gap-2 border-2 border-gray-500 rounded p-2 md:grid md:grid-cols-10">
-          <p className="justify-self-center"><span className="inline md:hidden">OrderID: </span>{order.id}</p>
-          <p><span className="inline md:hidden">Driver: </span>{order.driver || 'TBD'}</p>
-          <p><span className="inline md:hidden">Start City: </span>{order.startCity}</p>
-          <p><span className="inline md:hidden">End City: </span>{order.endCity}</p>
-          <p><span className="inline md:hidden">Start Date: </span>{format(new Date(order.startDate), 'dd/MM/yy HH:mm')}</p>
-          <p><span className="inline md:hidden">End Date: </span>{format(new Date(order.endDate), 'dd/MM/yy HH:mm')}</p>
-          <p className="col-span-2"><span className="inline md:hidden">Description: </span>{order.description}</p>
-          <p className="text-green-700"><span className="inline md:hidden">Revenue: </span>$ {order.revenue}</p>
-          <p className="text-red-500"><span className="inline md:hidden">Cost: </span>$ {order.cost}</p>
-        </a>
-      </Link>
+    <div>
+      <p>Account Details</p>
+      <p>{data.id}</p>
+      <p>{data.startCity} {data.endCity}</p>
     </div>
   );
 };
-
-export default SingleOrder;

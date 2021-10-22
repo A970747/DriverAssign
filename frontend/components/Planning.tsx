@@ -1,34 +1,33 @@
-import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Driver, Order } from '../interfaces';
 import useData from '../utils/useData';
+import useDropHelper from '../utils/useDropHelper';
+import { DropCardOrder } from './DropCardOrder';
 
 const Planning = () => {
   const drivers = useData('drivers');
   const orders = useData('orders');
-  console.log(drivers.data, orders.data);
+  const { dropHelper, getDraggedItem } = useDropHelper();
 
-  function onDragEnd(results: DropResult) {
-    const { source, destination } = results;
-    console.log(source, destination);
-  }
+  if (orders.isLoading || drivers.isLoading) return <p>Loading...</p>;
+  if (orders.isError || drivers.isError) return <div>failed to load</div>;
 
-  if (orders.isLoading) return <p>Orders still loading</p>;
-  if (drivers.isLoading) return <p>okay</p>;
+  //todo The index here is an issue because it affects whether the package knows to shift stuff around in the container.
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="grid grid-cols-2 border-8 border-green-500">
+    <DragDropContext onDragEnd={dropHelper} onDragStart={getDraggedItem}>
+      <div className="grid grid-cols-2 border-2 border-green-500">
         <Droppable droppableId="unassigned">
           {
             (provided) => (
-              <div className="flex flex-col border-8 border-red-500" ref={provided.innerRef} {...provided.droppableProps}>
+              <div className="flex flex-col gap-2 border-2 border-red-500 p-2" ref={provided.innerRef} {...provided.droppableProps}>
                 <span className="text-center">Unassigned Orders</span>
                 {
-                  orders.data.map((order: Order, index: number) => {
-                    return <Draggable key={order.id} draggableId={order.id.toString()} index={index}>
+                  orders.data.filter((order: Order) => !order.driver).map((order: Order, index: number) => {
+                    return <Draggable key={order.id} index={order.id} draggableId={order.id.toString()} >
                       {
                         (provided, snapshot) => (
-                          <div className="bg-red-50" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <p className="bg-red-50" key={order.id}>{order.id}</p>
+                          <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <DropCardOrder key={order.id} order={order} driver="Unassigned" />
                           </div>
                         )
                       }
@@ -40,19 +39,31 @@ const Planning = () => {
             )
           }
         </Droppable>
-        <div className="flex flex-col justify-center border-8 border-blue-100">
+        <div className="flex flex-col gap-2 justify-center border-2 border-blue-100">
           {
             drivers.data.map((driver: Driver) => (
               <Droppable key={driver.id} droppableId={driver.id.toString()}>
                 {
                   (provided) => (
-                    <div className="border-8 border-blue-500 flex-auto" ref={provided.innerRef} {...provided.droppableProps}>
-                      <p>{driver.firstName}</p>
-                      {
-                        orders.data.map((order: Order) => {
-                          return (order.driver == driver.id) ? <p key={order.id}>{order.id}</p> : null;
-                        })
-                      }
+                    <div className="border-2 border-blue-500 flex-auto" ref={provided.innerRef} {...provided.droppableProps}>
+                      <p className="text-xl text-center">{driver.firstName} {driver.id} Make these links to driver/[id]</p>
+                      <div className="flex flex-col gap-2 p-2">
+                        {
+                          orders.data.map((order: Order, index: number) => {
+                            return (order.driver == driver.id) ?
+                              <Draggable key={order.id} index={order.id} draggableId={order.id.toString()} >
+                                {
+                                  (provided, snapshot) => (
+                                    <div className="border-2 hover:border-gray-300 hover:shadow" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                      <DropCardOrder key={order.id} order={order} driver={driver.fullName} />
+                                    </div>
+                                  )
+                                }
+                              </Draggable> :
+                              null;
+                          })
+                        }
+                      </div>
                       {provided.placeholder}
                     </div>
                   )
