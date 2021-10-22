@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from "express";
+import DriverRouter from './routes/DriverRouter';
 import middleware from './utils/middleware';
-/* import todoRouter from "./todo/route"; */
 
 const app = express();
 
@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(middleware.requestLogger);
 app.use(middleware.tokenExtractor);
 
-// app.use("/api/drivers", driverRouter);
-// app.use("/api/orders", orderRouter);
+app.use("/api/drivers", DriverRouter);
+// app.use("/api/orders", OrderRoutes);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

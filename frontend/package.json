@@ -7,7 +7,8 @@
     "start": "next start",
     "type-check": "tsc",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "nextlint": "next lint"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.4",

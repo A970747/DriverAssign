@@ -1,0 +1,8 @@
+POST http://localhost:3333/api/drivers
+Content-Type: application/json
+
+{
+  "firstName": "Mark",
+  "lastName": "",
+  "fullName": "Mark Jenson"
+}
