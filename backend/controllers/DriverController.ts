@@ -25,7 +25,7 @@ class DriverController {
     //const id = uuidv4();
     try {
       const record = await DriverInstance.create({ ...req.body });
-      return res.json({ record, message: "Successfully create driver" });
+      return res.json({ record, message: "Successfully created driver" });
     } catch (e) {
       return res.json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
     }

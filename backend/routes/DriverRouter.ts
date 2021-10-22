@@ -3,39 +3,39 @@ import DriverController from '../controllers/DriverController';
 import { handleValidationError } from '../utils/middleware';
 import DriverValidator from '../validators/DriverValidator';
 
-const router = express.Router();
+const DriverRouter = express.Router();
 
-router.get(
+DriverRouter.get(
   '/',
   DriverController.getAllDrivers
 );
 
-router.get(
+DriverRouter.get(
   '/:id',
   DriverValidator.checkIdParam(),
   handleValidationError,
   DriverController.getSingleDriver
 );
 
-router.post(
+DriverRouter.post(
   '/',
   DriverValidator.checkCreateDriver(),
   handleValidationError,
   DriverController.addDriver
 );
 
-router.put(
+DriverRouter.put(
   '/:id',
   DriverValidator.checkIdParam(),
   handleValidationError,
   DriverController.updateDriver
 );
 
-router.delete(
+DriverRouter.delete(
   '/:id',
   DriverValidator.checkIdParam(),
   handleValidationError,
   DriverController.deleteDriver
 );
 
-export default router;
+export default DriverRouter;
