@@ -2,10 +2,10 @@ import { DataTypes, Model } from 'sequelize';
 import db from '../config/db';
 
 interface DriverAttributes {
-  id: Number,
-  firstName: String,
-  lastName: String,
-  fullName: String,
+  id: number,
+  firstName: string,
+  lastName: string,
+  fullName: string,
 }
 
 export class DriverInstance extends Model<DriverAttributes> { }

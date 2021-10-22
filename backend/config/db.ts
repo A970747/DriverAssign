@@ -1,4 +1,6 @@
+import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize';
+dotenv.config()
 
 let db: any;
 

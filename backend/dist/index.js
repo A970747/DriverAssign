@@ -7,11 +7,9 @@ const app_1 = __importDefault(require("./app"));
 const db_1 = __importDefault(require("./config/db"));
 // use db.authenticate when this goes to postgres
 db_1.default.sync().then(() => {
-    // tslint-disable-next-line no-console
     console.log("Connected to DB");
 });
 const PORT = process.env.PORT || 3333;
 app_1.default.listen(PORT, () => {
-    // tslint-disable-next-line no-console
     console.log(`Server is running on port: ${PORT}`);
 });
