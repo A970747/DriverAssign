@@ -4,7 +4,7 @@ const Driver_1 = require("../models/Driver");
 class DriverController {
     async getAllDrivers(req, res) {
         try {
-            const record = await Driver_1.DriverInstance.findAll();
+            const record = await Driver_1.Driver.findAll();
             return res.json(record);
         }
         catch (e) {
@@ -14,7 +14,7 @@ class DriverController {
     async getSingleDriver(req, res) {
         try {
             const { id } = req.params;
-            const record = await Driver_1.DriverInstance.findOne({ where: { id } });
+            const record = await Driver_1.Driver.findOne({ where: { id } });
             return res.json(record);
         }
         catch (e) {
@@ -24,7 +24,7 @@ class DriverController {
     async addDriver(req, res) {
         // const id = uuidv4();
         try {
-            const record = await Driver_1.DriverInstance.create({ ...req.body });
+            const record = await Driver_1.Driver.create({ ...req.body });
             return res.json({ record, message: "Successfully created driver" });
         }
         catch (e) {
@@ -34,7 +34,7 @@ class DriverController {
     async updateDriver(req, res) {
         try {
             const { id } = req.params;
-            const record = await Driver_1.DriverInstance.findOne({ where: { id } });
+            const record = await Driver_1.Driver.findOne({ where: { id } });
             if (!record) {
                 return res.json({ message: `Can not find driver with id: ${id}` });
             }
@@ -52,7 +52,7 @@ class DriverController {
     async deleteDriver(req, res) {
         try {
             const { id } = req.params;
-            const record = await Driver_1.DriverInstance.findOne({ where: { id } });
+            const record = await Driver_1.Driver.findOne({ where: { id } });
             if (!record) {
                 return res.json({ message: `Can not find driver with id: ${id}` });
             }

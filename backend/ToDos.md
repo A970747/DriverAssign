@@ -8,23 +8,24 @@
   - Data persists. :heavy_check_mark:
   - Create Driver model/route/controller. :heavy_check_mark:
   - Confirm basic CRUD operations on Driver. :heavy_check_mark:
-  - Create Order model/route/controller.
-  - Confirm basic CRUD operations on Order.
-  - Add tests for both routes.
+  - Create Order model/route/controller. :heavy_check_mark:
+  - Confirm basic CRUD operations on Order. :heavy_check_mark:
   - Fix incorrect status codes. :heavy_check_mark:
+  - Add tests for both routes.
   - Add seed data.
 
 
 ### Medium:
 
-  - Add relationships to Models.
-
 #### Low:
 
   - Input order CSV.
   - Output csv files for routes.
+  - Add relationships to Models.
+  - Add foreign keys to table & index for speed.
+  
   
 
 ##### Ideas:
 
-   - Route with multi-params to allow for date based queries.
+  - Route with multi-params to allow for date based queries.

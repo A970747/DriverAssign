@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { DriverInstance } from "../models/Driver";
+import { Driver } from "../models/Driver";
 
 class DriverController {
   async getAllDrivers(req: Request, res: Response) {
     try {
-      const record = await DriverInstance.findAll();
+      const record = await Driver.findAll();
       return res.status(200).json(record);
     } catch (e) {
       return res.status(500).json({ message: "Unable to get all drivers", status: 500, route: "api/drivers" });
@@ -14,7 +14,7 @@ class DriverController {
   async getSingleDriver(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const record = await DriverInstance.findOne({ where: { id } });
+      const record = await Driver.findOne({ where: { id } });
       return res.json(record);
     } catch (e) {
       return res.status(500).json({ message: "Unable to get driver", status: 500, route: "api/drivers/:id" });
@@ -24,7 +24,7 @@ class DriverController {
   async addDriver(req: Request, res: Response) {
     // const id = uuidv4();
     try {
-      const record = await DriverInstance.create({ ...req.body });
+      const record = await Driver.create({ ...req.body });
       return res.status(201).json({ record, message: "Successfully created driver" });
     } catch (e) {
       return res.status(500).json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
@@ -34,7 +34,7 @@ class DriverController {
   async updateDriver(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const record = await DriverInstance.findOne({ where: { id } });
+      const record = await Driver.findOne({ where: { id } });
 
       if (!record) {
         return res.status(500).json({ message: `Can not find driver with id: ${id}` });
@@ -49,7 +49,7 @@ class DriverController {
   async deleteDriver(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const record = await DriverInstance.findOne({ where: { id } });
+      const record = await Driver.findOne({ where: { id } });
 
       if (!record) {
         return res.json({ message: `Can not find driver with id: ${id}` });
