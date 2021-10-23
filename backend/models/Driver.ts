@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/db';
+import { OrderInstance } from './Order';
 
 interface DriverAttributes {
   id: number,
@@ -38,3 +39,4 @@ DriverInstance.init(
   }
 )
 
+DriverInstance.hasMany(OrderInstance);

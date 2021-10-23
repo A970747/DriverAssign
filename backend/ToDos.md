@@ -11,7 +11,7 @@
   - Create Order model/route/controller.
   - Confirm basic CRUD operations on Order.
   - Add tests for both routes.
-  - Fix incorrect status codes.
+  - Fix incorrect status codes. :heavy_check_mark:
   - Add seed data.
 
 

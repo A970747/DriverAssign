@@ -5,9 +5,9 @@ class DriverController {
   async getAllDrivers(req: Request, res: Response) {
     try {
       const record = await DriverInstance.findAll();
-      return res.json(record);
+      return res.status(200).json(record);
     } catch (e) {
-      return res.json({ message: "Unable to get all drivers", status: 500, route: "api/drivers" });
+      return res.status(500).json({ message: "Unable to get all drivers", status: 500, route: "api/drivers" });
     }
   }
 
@@ -17,7 +17,7 @@ class DriverController {
       const record = await DriverInstance.findOne({ where: { id } });
       return res.json(record);
     } catch (e) {
-      return res.json({ message: "Unable to get driver", status: 500, route: "api/drivers/:id" });
+      return res.status(500).json({ message: "Unable to get driver", status: 500, route: "api/drivers/:id" });
     }
   }
 
@@ -25,9 +25,9 @@ class DriverController {
     // const id = uuidv4();
     try {
       const record = await DriverInstance.create({ ...req.body });
-      return res.json({ record, message: "Successfully created driver" });
+      return res.status(201).json({ record, message: "Successfully created driver" });
     } catch (e) {
-      return res.json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
+      return res.status(500).json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
     }
   }
 
@@ -37,17 +37,13 @@ class DriverController {
       const record = await DriverInstance.findOne({ where: { id } });
 
       if (!record) {
-        return res.json({ message: `Can not find driver with id: ${id}` });
+        return res.status(500).json({ message: `Can not find driver with id: ${id}` });
       }
 
       const updatedRecord = await record.update({ ...req.body });
       return res.json({ record: updatedRecord });
     } catch (e) {
-      return res.json({
-        message: "Unable to update",
-        status: 500,
-        route: "api/drivers/:id",
-      });
+      return res.status(500).json({ message: "Unable to update", status: 500, route: "api/drivers/:id" });
     }
   }
   async deleteDriver(req: Request, res: Response) {
@@ -60,9 +56,9 @@ class DriverController {
       }
 
       const deletedRecord = await record.destroy();
-      return res.json({ record: deletedRecord });
+      return res.status(204).json({ record: deletedRecord });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         message: "Unable to delete",
         status: 500,
         route: "api/drivers/:id",
