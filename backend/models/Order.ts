@@ -6,9 +6,9 @@ interface OrderAttributes extends Model {
   /* cost: number,
   distance: number, */
   driver: number | null,
-  /* endCity: string,
+  endCity: string,
   endProv: string,
-  endCountry: string */
+  endCountry: string
   endDate: string,
   id: number,
   /* revenue: number,
@@ -33,7 +33,8 @@ export const Order = <OrderAttributesStatic>db.define('Order',
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
-    /* distance: {
+    //start
+    distance: {
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
@@ -43,8 +44,9 @@ export const Order = <OrderAttributesStatic>db.define('Order',
     },
     cost: {
       type: DataTypes.FLOAT,
-      defaultValue: null, */
-    //},
+      defaultValue: null,
+    },
+    //here
     startDate: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -53,7 +55,7 @@ export const Order = <OrderAttributesStatic>db.define('Order',
       type: DataTypes.DATE,
       allowNull: false,
     },
-    /* startCity: {
+    startCity: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -76,7 +78,7 @@ export const Order = <OrderAttributesStatic>db.define('Order',
     endCountry: {
       type: DataTypes.STRING,
       allowNull: false,
-    }, */
+    },
     description: {
       type: DataTypes.STRING,
       defaultValue: "Generic commodity",

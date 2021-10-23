@@ -24,9 +24,8 @@ class OrderController {
   async addOrder(req: Request, res: Response) {
     try {
       const record = await Order.create({ ...req.body })
-      return res.status(201).json({ record, message: "Successfully created Order" });
+      return res.status(201).json(record);
     } catch (e) {
-      console.log('e', e);
       return res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
     }
   }
@@ -37,7 +36,7 @@ class OrderController {
       const record = await Order.findOne({ where: { id } });
 
       if (!record) {
-        return res.status(500).json({ message: `Can not find Order with id: ${id}` });
+        return res.status(404).json({ message: `Can not find Order with id: ${id}` });
       }
 
       const updatedRecord = await record.update({ ...req.body });
@@ -52,7 +51,7 @@ class OrderController {
       const record = await Order.findOne({ where: { id } });
 
       if (!record) {
-        return res.json({ message: `Can not find Order with id: ${id}` });
+        return res.status(404).json({ message: `Can not find Order with id: ${id}` });
       }
 
       const deletedRecord = await record.destroy();

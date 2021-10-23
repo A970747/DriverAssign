@@ -25,7 +25,7 @@ class DriverController {
     // const id = uuidv4();
     try {
       const record = await Driver.create({ ...req.body });
-      return res.status(201).json({ record, message: "Successfully created driver" });
+      return res.status(201).json(record);
     } catch (e) {
       return res.status(500).json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
     }
@@ -37,7 +37,7 @@ class DriverController {
       const record = await Driver.findOne({ where: { id } });
 
       if (!record) {
-        return res.status(500).json({ message: `Can not find driver with id: ${id}` });
+        return res.status(404).json({ message: `Can not find driver with id: ${id}` });
       }
 
       const updatedRecord = await record.update({ ...req.body });
@@ -52,7 +52,7 @@ class DriverController {
       const record = await Driver.findOne({ where: { id } });
 
       if (!record) {
-        return res.json({ message: `Can not find driver with id: ${id}` });
+        return res.status(404).json({ message: `Can not find driver with id: ${id}` });
       }
 
       const deletedRecord = await record.destroy();
