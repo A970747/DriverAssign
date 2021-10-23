@@ -9,11 +9,14 @@ if (process.env.NODE_ENV === 'production') {
     console.error('Unable to connect to the database:', error);
   }
 } else {
-  db.sync().then(() => {
-    console.log("Connected to DB");
-  });
+  db.sync()
+    .then(() => {
+      console.log("Connected to DB");
+    })
+    .catch(() => {
+      console.log("Problem attempting to start up the SQLite db")
+    });
 }
-
 
 const PORT = process.env.PORT || 3333;
 

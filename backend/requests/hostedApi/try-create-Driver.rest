@@ -2,7 +2,7 @@ POST https://driver-assign-sppw9.ondigitalocean.app/api/drivers
 Content-Type: application/json
 
 {
-  "firstName": "Mark",
-  "lastName": "Jenson",
-  "fullName": "Mark Jenson"
+  "firstName": "James",
+  "lastName": "Cameron",
+  "fullName": "James Cameron"
 }
