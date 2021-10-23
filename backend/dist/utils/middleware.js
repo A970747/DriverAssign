@@ -47,7 +47,8 @@ const handleValidationError = (req, res, next) => {
     const error = (0, express_validator_1.validationResult)(req);
     console.log(error);
     if (!error.isEmpty()) {
-        return res.status(400).json(error.array()[0]);
+        console.log('this is the place');
+        return res.status(400).json(error);
     }
     next();
 };

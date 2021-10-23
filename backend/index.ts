@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
     console.error('Unable to connect to the database:', error);
   }
 } else {
-  db.sync()
+  db.sync({ force: true })
     .then(() => {
       console.log("Connected to DB");
     })

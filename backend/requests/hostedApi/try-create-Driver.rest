@@ -1,8 +1,0 @@
-POST https://driver-assign-sppw9.ondigitalocean.app/api/drivers
-Content-Type: application/json
-
-{
-  "firstName": "James",
-  "lastName": "Cameron",
-  "fullName": "James Cameron"
-}

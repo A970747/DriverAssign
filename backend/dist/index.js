@@ -15,8 +15,12 @@ if (process.env.NODE_ENV === 'production') {
     }
 }
 else {
-    db_1.default.sync().then(() => {
+    db_1.default.sync({ force: true })
+        .then(() => {
         console.log("Connected to DB");
+    })
+        .catch(() => {
+        console.log("Problem attempting to start up the SQLite db");
     });
 }
 const PORT = process.env.PORT || 3333;
