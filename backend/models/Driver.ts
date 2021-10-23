@@ -1,14 +1,18 @@
-import { DataTypes } from 'sequelize';
+import { BuildOptions, DataTypes, Model } from 'sequelize';
 import db from '../config/db';
 
-interface DriverAttributes {
+interface DriverAttributes extends Model {
   id: number,
   firstName: string,
   lastName: string,
   fullName: string,
 }
 
-const Driver = db.define('Driver',
+type DriverAttributesStatic = typeof Model & {
+  new(values?: any, options?: BuildOptions): any;
+}
+
+export const Driver = <DriverAttributesStatic>db.define('Driver',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -35,4 +39,3 @@ const Driver = db.define('Driver',
     tableName: 'Drivers',
   }
 )
-

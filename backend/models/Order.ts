@@ -1,7 +1,7 @@
-import { DataTypes, Model } from 'sequelize';
+import { BuildOptions, DataTypes, Model } from 'sequelize';
 import db from '../config/db';
 
-interface OrderAttributes {
+interface OrderAttributes extends Model {
   description: string,
   /* cost: number,
   distance: number, */
@@ -18,10 +18,11 @@ interface OrderAttributes {
   startDate: string,
 }
 
-export class OrderInstance extends Model<OrderAttributes> { }
+type OrderAttributesStatic = typeof Model & {
+  new(values?: object, options?: BuildOptions): any;
+}
 
-//driver type = null might have been causing those delete issues from json server.
-OrderInstance.init(
+export const Order = <OrderAttributesStatic>db.define('Order',
   {
     id: {
       type: DataTypes.INTEGER,
