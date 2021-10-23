@@ -1,17 +1,17 @@
-import { body, param } from 'express-validator';
+import { param } from 'express-validator';
 
 
 export function checkCreateOrder() {
   return [
-    body('firstName')
-      .notEmpty()
-      .withMessage('Order first name is required.'),
-    body('lastName')
-      .notEmpty()
-      .withMessage('Order last name is required.'),
-    body('fullName')
-      .notEmpty()
-      .withMessage('Order full name is required.'),
+    /*     body('firstName')
+          .notEmpty()
+          .withMessage('Order first name is required.'),
+        body('lastName')
+          .notEmpty()
+          .withMessage('Order last name is required.'),
+        body('fullName')
+          .notEmpty()
+          .withMessage('Order full name is required.'), */
   ];
 }
 

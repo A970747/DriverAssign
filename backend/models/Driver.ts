@@ -1,6 +1,5 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import db from '../config/db';
-import { OrderInstance } from './Order';
 
 interface DriverAttributes {
   id: number,
@@ -9,9 +8,7 @@ interface DriverAttributes {
   fullName: string,
 }
 
-export class DriverInstance extends Model<DriverAttributes> { }
-
-DriverInstance.init(
+const Driver = db.define('Driver',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -39,4 +36,3 @@ DriverInstance.init(
   }
 )
 
-DriverInstance.hasMany(OrderInstance);

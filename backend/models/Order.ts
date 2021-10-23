@@ -1,26 +1,24 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/db';
-import { DriverInstance } from './Driver';
 
 interface OrderAttributes {
   description: string,
-  cost: number,
-  distance: number,
+  /* cost: number,
+  distance: number, */
   driver: number | null,
-  endCity: string,
+  /* endCity: string,
   endProv: string,
-  endCountry: string,
+  endCountry: string */
   endDate: string,
   id: number,
-  revenue: number,
+  /* revenue: number,
   startCity: string,
   startProv: string,
-  startCountry: string,
+  startCountry: string, */
   startDate: string,
 }
 
 export class OrderInstance extends Model<OrderAttributes> { }
-
 
 //driver type = null might have been causing those delete issues from json server.
 OrderInstance.init(
@@ -34,7 +32,7 @@ OrderInstance.init(
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
-    distance: {
+    /* distance: {
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
@@ -44,8 +42,8 @@ OrderInstance.init(
     },
     cost: {
       type: DataTypes.FLOAT,
-      defaultValue: null,
-    },
+      defaultValue: null, */
+    //},
     startDate: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -54,7 +52,7 @@ OrderInstance.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    startCity: {
+    /* startCity: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -77,7 +75,7 @@ OrderInstance.init(
     endCountry: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }, */
     description: {
       type: DataTypes.STRING,
       defaultValue: "Generic commodity",
@@ -88,5 +86,3 @@ OrderInstance.init(
     tableName: 'Orders',
   }
 )
-
-OrderInstance.belongsTo(DriverInstance);

@@ -42,7 +42,8 @@ export const handleValidationError = (req: Request, res: Response, next: NextFun
   const error = validationResult(req);
   console.log(error);
   if (!error.isEmpty()) {
-    return res.status(400).json(error.array()[0]);
+    console.log('this is the place');
+    return res.status(400).json(error);
   }
   next();
 }

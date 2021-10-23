@@ -22,11 +22,11 @@ class OrderController {
   }
 
   async addOrder(req: Request, res: Response) {
-    // const id = uuidv4();
     try {
-      const record = await OrderInstance.create({ ...req.body });
+      const record = await OrderInstance.create({ ...req.body })
       return res.status(201).json({ record, message: "Successfully created Order" });
     } catch (e) {
+      console.log('e', e);
       return res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
     }
   }
