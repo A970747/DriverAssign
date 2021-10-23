@@ -4,7 +4,9 @@ import db from "./config/db";
 // use db.authenticate when this goes to postgres
 if (process.env.NODE_ENV === 'production') {
   try {
-    db.authenticate().sync({ force: true }).then(() => console.log('Connection has been established successfully.'));
+    db.authenticate()
+      .then(() => db.sync({ force: true })
+        .then(() => console.log('Connection has been established successfully.')));
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
