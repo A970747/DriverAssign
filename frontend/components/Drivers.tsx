@@ -4,6 +4,7 @@ import SingleDriver from './DriversCard';
 
 const Drivers = () => {
   const { data, isError, isLoading } = useData('drivers');
+  console.log(data);
 
   if (isError) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
