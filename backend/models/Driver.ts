@@ -8,11 +8,9 @@ interface DriverAttributes extends Model {
   fullName: string,
 }
 
-type DriverAttributesStatic = typeof Model & {
-  new(values?: any, options?: BuildOptions): any;
-}
+type DriverAttributesStatic = typeof Model & (new (values?: any, options?: BuildOptions) => any);
 
-export const Driver = <DriverAttributesStatic>db.define('Driver',
+export const Driver = db.define('Driver',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -38,4 +36,4 @@ export const Driver = <DriverAttributesStatic>db.define('Driver',
     sequelize: db,
     tableName: 'Drivers',
   }
-)
+) as DriverAttributesStatic

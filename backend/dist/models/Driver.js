@@ -6,10 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Driver = void 0;
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../config/db"));
-class Driver extends sequelize_1.Model {
-}
-exports.Driver = Driver;
-Driver.init({
+exports.Driver = db_1.default.define('Driver', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,

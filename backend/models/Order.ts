@@ -18,11 +18,9 @@ interface OrderAttributes extends Model {
   startDate: string,
 }
 
-type OrderAttributesStatic = typeof Model & {
-  new(values?: object, options?: BuildOptions): any;
-}
+type OrderAttributesStatic = typeof Model & (new(values?: object, options?: BuildOptions) => any);
 
-export const Order = <OrderAttributesStatic>db.define('Order',
+export const Order = db.define('Order',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -33,7 +31,7 @@ export const Order = <OrderAttributesStatic>db.define('Order',
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
-    //start
+    // start
     distance: {
       type: DataTypes.INTEGER,
       defaultValue: null,
@@ -46,7 +44,7 @@ export const Order = <OrderAttributesStatic>db.define('Order',
       type: DataTypes.FLOAT,
       defaultValue: null,
     },
-    //here
+    // here
     startDate: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -88,4 +86,4 @@ export const Order = <OrderAttributesStatic>db.define('Order',
     sequelize: db,
     tableName: 'Orders',
   }
-)
+) as OrderAttributesStatic
