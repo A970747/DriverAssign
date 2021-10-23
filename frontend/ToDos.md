@@ -2,9 +2,17 @@
 
 ## High:
 
+  - Scaffold out NextJS app. :heavy_check_mark:
+  - Setup mock server with json-server. :heavy_check_mark:
+  - Set up data query/caching with SWR. :heavy_check_mark:
+  - Basic set of pages & routes for drivers & order. :heavy_check_mark:
+  - Scaffold out beautiful-dnd page for assigning orders with mock data. :heavy_check_mark:
+  - Assign/Reassign order to driver with drop interface. :heavy_check_mark:
+  - "Real time" change possible by increasing polling rate. :heavy_check_mark:
   - Fix index of items in different containers in Planning so that the shifting works
   - Implement ability to update Rev/Cost on orders on ind. Order page
   - Add province to the start/end dest where orders are shown.
+  - Add minimum integration tests.
 
 ### Medium:
 
@@ -13,6 +21,8 @@
   - Include orders driver is scheduled on in ind. driver page.
   - Implement ability to create new orders.
   - When no orders, add some text to various pages indicating so and link to adding drivers/orders.
+  - Optimistic updating of cache instead of pulling data down
+  - Expand integration tests & implement Cypress e2e.
 
 #### Low:
 
