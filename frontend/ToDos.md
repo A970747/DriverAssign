@@ -12,24 +12,24 @@ responsive on form/single order
   - Assign/Reassign order to driver with drop interface. :heavy_check_mark:
   - "Real time" change possible by increasing polling rate. :heavy_check_mark:
   - Fix index of items in different containers in Planning so that the shifting works
-  - Implement ability to update Rev/Cost on orders on ind. Order page
-  - Add province to the start/end dest where orders are shown.
+  - Implement ability to update Rev/Cost on orders on ind. Order page :heavy_check_mark:
+  - Add province to the start/end dest where orders are shown. :heavy_check_mark:
   - Add minimum integration tests.
 
 ### Medium:
 
-  - Implement ability to change ALL Order fields.
-  - Implement ability to update driver details.
-  - Include orders driver is scheduled on in ind. driver page.
-  - Implement ability to create new orders.
-  - When no orders, add some text to various pages indicating so and link to adding drivers/orders.
-  - Optimistic updating of cache instead of pulling data down
+  - Implement ability to change ALL Order fields. :heavy_check_mark:
+  - Implement ability to update driver details. :heavy_check_mark:
+  - Include orders driver is scheduled on in ind. driver page. 
+  - Implement ability to create new orders. :heavy_check_mark:
+  - When no orders, add some text to various pages indicating so and link to adding drivers/orders. :heavy_check_mark:
+  - Optimistic updating of cache instead of pulling data down :heavy_check_mark:
   - Expand integration tests & implement Cypress e2e.
 
 #### Low:
 
   - Implement map on orders tab using OSM/Open layer so when you show an ind. order it displays the map with org/dest.
-  - Find some design inspiration to improve visuals
+  - Find some design inspiration to improve visuals :heavy_check_mark:
   - Add more driver details. Fleet, home office.
   - Allow user to show orders by dates.
   - Allow user to show driver orders by date in ind. driver page.

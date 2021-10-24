@@ -23,10 +23,10 @@ export interface Order {
 }
 
 export type Driver = {
-  id: number,
+  id?: number,
   firstName: string,
   lastName: string,
-  fullName: string
+  fullName?: string
 }
 
 export type DropHelper = {
@@ -37,8 +37,6 @@ export interface eventTargetValues {
   name: string,
   type: string,
   value: string | number
-<<<<<<< HEAD
-=======
 }
 
 export interface edit {
@@ -48,5 +46,9 @@ export interface edit {
 export interface setEdit {
   success: boolean,
   message: string,
->>>>>>> updates
+}
+
+export interface reducerTotals {
+  totalRev: number,
+  totalCost: number,
 }

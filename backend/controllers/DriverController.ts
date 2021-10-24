@@ -32,10 +32,6 @@ class DriverController {
   }
 
   async addDriver(req: Request, res: Response, next: NextFunction) {
-<<<<<<< HEAD
-    // const id = uuidv4();
-=======
->>>>>>> updates
     try {
       const record = await Driver.create({ ...req.body });
       if (record) {

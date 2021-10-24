@@ -1,4 +1,5 @@
 import format from "date-fns/format";
+import Link from 'next/link';
 import Router from "next/router";
 import { SyntheticEvent, useState } from "react";
 import { Order } from "../../interfaces";
@@ -68,10 +69,6 @@ export default function OrderHandler({ order = orderFields, action, setEdit }: P
         setInputs(formatInputs(inputs));
         try {
           await updateOrder(id, inputs);
-<<<<<<< HEAD
-          console.log(inputs);
-=======
->>>>>>> updates
           setInFlight(false);
           setEdit(false);
         } catch (e) {
@@ -87,7 +84,7 @@ export default function OrderHandler({ order = orderFields, action, setEdit }: P
   return (
     <div>
       <form onSubmit={handleSubmit} >
-        <fieldset disabled={inFlight} className="grid grid-cols-3 p-2 gap-2  border-4 bg-blue-50">
+        <fieldset disabled={inFlight} className="grid grid-cols-3 p-2 gap-2  border-4 bg-gray-50 rounded-md">
           <div>
             <span>OrderID: {id} </span>
           </div>
@@ -261,7 +258,14 @@ export default function OrderHandler({ order = orderFields, action, setEdit }: P
             />
           </label>
         </fieldset>
-        <button type="submit">{action}</button>
+        <div className="flex gap-2">
+          <button className="capitalize border-2 border-gray-500 rounded-md bg-gray-500 py-2 w-full text-center text-white text-2xl hover:bg-gray-50 hover:text-gray-500" type="submit">{action}</button>
+          <Link href={(order?.id) ? `/orders/${order.id}` : `/orders`}>
+            <a onClick={() => order.id && setEdit(false)} className="border-2 border-gray-500 rounded-md bg-gray-500 py-2 w-full text-center text-white text-2xl hover:bg-gray-50 hover:text-gray-500">
+              Back
+            </a>
+          </Link>
+        </div>
       </form>
     </div>
   );

@@ -5,30 +5,44 @@ class DriverController {
     async getAllDrivers(req, res, next) {
         try {
             const record = await Driver_1.Driver.findAll();
-            return res.status(200).json(record);
+            if (record) {
+                res.json(record);
+            }
+            else {
+                res.status(500).json({ message: "Unable to get all drivers", status: 500, route: "api/drivers" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Unable to get all drivers", status: 500, route: "api/drivers" });
+            next(e);
         }
     }
     async getSingleDriver(req, res, next) {
         try {
             const { id } = req.params;
             const record = await Driver_1.Driver.findOne({ where: { id } });
-            return res.json(record);
+            if (record) {
+                res.json(record);
+            }
+            else {
+                res.status(404).json({ message: "Unable to get driver", status: 500, route: "api/drivers/:id" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Unable to get driver", status: 500, route: "api/drivers/:id" });
+            next(e);
         }
     }
     async addDriver(req, res, next) {
-        // const id = uuidv4();
         try {
             const record = await Driver_1.Driver.create({ ...req.body });
-            return res.status(201).json(record);
+            if (record) {
+                return res.status(201).json(record);
+            }
+            else {
+                res.status(500).json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Failed to create driver", status: 500, route: "api/drivers" });
+            next(e);
         }
     }
     async updateDriver(req, res, next) {

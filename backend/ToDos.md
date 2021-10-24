@@ -12,7 +12,7 @@
   - Confirm basic CRUD operations on Order. :heavy_check_mark:
   - Fix incorrect status codes. :heavy_check_mark:
   - Add tests for both routes.
-  - Add seed data.
+  - Add seed data. :heavy_check_mark:
 
 
 ### Medium:
@@ -21,7 +21,7 @@
 
   - Input order CSV.
   - Output csv files for routes.
-  - Add relationships to Models.
+  - Add relationships to Models. 
   - Add foreign keys to table & index for speed.
   
   
