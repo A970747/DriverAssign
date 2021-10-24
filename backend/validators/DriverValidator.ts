@@ -1,7 +1,7 @@
 import { body, param } from 'express-validator';
 
 
-export function checkCreateDriver() {
+export function checkRequiredFields() {
   return [
     body('firstName')
       .notEmpty()
@@ -26,6 +26,6 @@ export function checkIdParam() {
 }
 
 export default {
-  checkCreateDriver,
+  checkRequiredFields,
   checkIdParam
 };

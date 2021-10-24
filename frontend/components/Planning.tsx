@@ -2,7 +2,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Driver, Order } from '../interfaces';
 import useData from '../utils/useData';
 import useDropHelper from '../utils/useDropHelper';
-import { DropCardOrder } from './DropCardOrder';
+import { DropCardOrder } from './orders/DropOrderCard';
 
 const Planning = () => {
   const drivers = useData('drivers');

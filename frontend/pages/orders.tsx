@@ -1,4 +1,4 @@
-import Orders from '../components/Orders';
+import Orders from '../components/orders/Orders';
 
 const OrderPage = () => {
   return (

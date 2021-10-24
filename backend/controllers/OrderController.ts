@@ -1,67 +1,93 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { Order } from "../models/Order";
 
 class OrderController {
-  async getAllOrders(req: Request, res: Response) {
+  async getAllOrders(req: Request, res: Response, next: NextFunction) {
     try {
+      const { id } = req.params;
       const record = await Order.findAll();
-      return res.status(200).json(record);
+
+      if (record) {
+        res.json(record)
+      } else {
+        res.status(500).json({ message: "Unable to get all orders", status: 500, route: "api/Orders" });
+      }
     } catch (e) {
-      return res.status(500).json({ message: "Unable to get all Orders", status: 500, route: "api/Orders" });
+      next(e);
     }
   }
 
-  async getSingleOrder(req: Request, res: Response) {
+  async getSingleOrder(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
       const record = await Order.findOne({ where: { id } });
-      return res.json(record);
+      if (record) {
+        res.json(record)
+      } else {
+        res.status(404).json({ message: "Order does not exist", status: 404, route: "api/Orders" });
+      }
     } catch (e) {
-      return res.status(500).json({ message: "Unable to get Order", status: 500, route: "api/Orders/:id" });
+      next(e);
     }
   }
 
-  async addOrder(req: Request, res: Response) {
+  async addOrder(req: Request, res: Response, next: NextFunction) {
     try {
       const record = await Order.create({ ...req.body })
-      return res.status(201).json(record);
+      if (record) {
+        res.status(201).json(record);
+      } else {
+        res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
+      }
     } catch (e) {
-      return res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
+      next(e);
     }
   }
 
-  async updateOrder(req: Request, res: Response) {
+  async updateOrder(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
       const record = await Order.findOne({ where: { id } });
 
       if (!record) {
-        return res.status(404).json({ message: `Can not find Order with id: ${id}` });
+        return res.status(404).json({ message: `Can not find order with id: ${id}` });
       }
 
       const updatedRecord = await record.update({ ...req.body });
-      return res.json({ record: updatedRecord });
+
+      if (updatedRecord) {
+        res.json({ record: updatedRecord });
+      } else {
+        res.status(500).json({ method: "PUT", message: "Unable to update", status: 500, route: "api/orders/:id" });
+      }
     } catch (e) {
-      return res.status(500).json({ message: "Unable to update", status: 500, route: "api/Orders/:id" });
+      next(e);
     }
   }
-  async deleteOrder(req: Request, res: Response) {
+
+  async deleteOrder(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
       const record = await Order.findOne({ where: { id } });
 
       if (!record) {
-        return res.status(404).json({ message: `Can not find Order with id: ${id}` });
+        return res.status(404).json({ message: `Can not find order with id: ${id}` });
       }
 
       const deletedRecord = await record.destroy();
-      return res.status(204).json({ record: deletedRecord });
+
+      if (deletedRecord) {
+        res.status(204).json({ record: deletedRecord });
+      } else {
+        return res.status(500).json({
+          method: "PUT",
+          message: "Unable to delete",
+          route: "api/orders/:id",
+          status: 500
+        });
+      }
     } catch (e) {
-      return res.status(500).json({
-        message: "Unable to delete",
-        status: 500,
-        route: "api/Orders/:id",
-      });
+      next(e);
     }
   }
 }

@@ -1,7 +1,7 @@
 import express from 'express';
 import OrderController from '../controllers/OrderController';
 import { handleValidationError } from '../utils/middleware';
-import OrderValidator from '../validators/OrderValidator';
+import { checkIdParam, checkRequiredFields } from '../validators/OrderValidator';
 
 const OrderRouter = express.Router();
 
@@ -12,28 +12,28 @@ OrderRouter.get(
 
 OrderRouter.get(
   '/:id',
-  OrderValidator.checkIdParam(),
+  checkIdParam(),
   handleValidationError,
   OrderController.getSingleOrder
 );
 
 OrderRouter.post(
   '/',
-  OrderValidator.checkCreateOrder(),
+  checkRequiredFields(),
   handleValidationError,
   OrderController.addOrder
 );
 
 OrderRouter.put(
   '/:id',
-  OrderValidator.checkIdParam(),
+  checkRequiredFields(),
   handleValidationError,
   OrderController.updateOrder
 );
 
 OrderRouter.delete(
   '/:id',
-  OrderValidator.checkIdParam(),
+  checkIdParam(),
   handleValidationError,
   OrderController.deleteOrder
 );

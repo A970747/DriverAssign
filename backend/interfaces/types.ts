@@ -4,3 +4,25 @@
 //
 // import { User } from 'path/to/interfaces';
 
+export interface Driver {
+  firstName: string,
+  lastName: string,
+  fullName: string
+}
+
+export interface Order {
+  description: string,
+  cost: number | null,
+  distance: number | null,
+  driver: number | null,
+  endCity: string,
+  endProv: string,
+  endCountry: string,
+  endDate: string,
+  id?: number,
+  revenue: number | null,
+  startCity: string,
+  startProv: string,
+  startCountry: string,
+  startDate: string,
+}

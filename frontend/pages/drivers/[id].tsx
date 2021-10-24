@@ -1,4 +1,4 @@
-import { SingleDriver } from '../../components/SingleDriver';
+import { SingleDriver } from '../../components/drivers/SingleDriver';
 
 type Props = {
   query: {

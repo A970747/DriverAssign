@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Driver } from '../interfaces';
+import { Driver } from '../../interfaces';
 
 type Props = {
   driver: Driver

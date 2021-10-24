@@ -1,19 +1,27 @@
 import app from "./app";
 import db from "./config/db";
+import { Driver } from "./models/Driver";
+import { Order } from "./models/Order";
+import { driverData, orderData } from "./utils/mockData";
 
 // use db.authenticate when this goes to postgres
 if (process.env.NODE_ENV === 'production') {
-  try {
-    db.authenticate()
-      .then(() => db.sync({ force: true })
-        .then(() => console.log('Connection has been established successfully.')));
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
+  // !remove SYNC when migrations are setup. Migrations should be syncing the tables - this is a workaround for deving.
+  db.authenticate()
+    .then(() => db.sync({ force: true })
+      .then(async () => {
+        console.log('Connection has been established successfully.')
+        await Driver.bulkCreate(driverData, { returning: true });
+        await Order.bulkCreate(orderData, { returning: true })
+      }))
+    .catch(() => console.error('Unable to connect to the PG database:'))
+
 } else {
   db.sync({ force: true })
-    .then(() => {
+    .then(async () => {
       console.log("Connected to DB");
+      const drivers = await Driver.bulkCreate(driverData, { returning: true });
+      const orders = await Order.bulkCreate(orderData, { returning: true })
     })
     .catch(() => {
       console.log("Problem attempting to start up the SQLite db")

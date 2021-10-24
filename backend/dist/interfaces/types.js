@@ -4,3 +4,4 @@
 // example, to import the interface below do:
 //
 // import { User } from 'path/to/interfaces';
+Object.defineProperty(exports, "__esModule", { value: true });

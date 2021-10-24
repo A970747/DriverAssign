@@ -19,7 +19,6 @@ export default function useDropHelper(): Return {
   async function dropHelper(results: DropResult) {
     const { source, destination } = results;
     // Check source.droppableId against destination.droppableId, if they're not the same then put the destination.droppableId as driver value in order.
-    //
 
     if (source.droppableId != destination.droppableId) {
       const updatedId = (destination.droppableId == 'unassigned') ? '' : parseInt(destination.droppableId);

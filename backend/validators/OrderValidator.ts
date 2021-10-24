@@ -1,17 +1,31 @@
-import { param } from 'express-validator';
+import { body, param } from 'express-validator';
 
-
-export function checkCreateOrder() {
+export function checkRequiredFields() {
   return [
-    /*     body('firstName')
-          .notEmpty()
-          .withMessage('Order first name is required.'),
-        body('lastName')
-          .notEmpty()
-          .withMessage('Order last name is required.'),
-        body('fullName')
-          .notEmpty()
-          .withMessage('Order full name is required.'), */
+    body('startDate')
+      .notEmpty()
+      .withMessage('Start Date is required.'),
+    body('endDate')
+      .notEmpty()
+      .withMessage('End date is required.'),
+    body('startCity')
+      .notEmpty()
+      .withMessage('Start City is required.'),
+    body('startProv')
+      .notEmpty()
+      .withMessage('Start Province is required.'),
+    body('startCountry')
+      .notEmpty()
+      .withMessage('Start Country is required.'),
+    body('endCity')
+      .notEmpty()
+      .withMessage('End City is required.'),
+    body('endProv')
+      .notEmpty()
+      .withMessage('End Province is required.'),
+    body('endCountry')
+      .notEmpty()
+      .withMessage('End Country is required.'),
   ];
 }
 
@@ -26,6 +40,6 @@ export function checkIdParam() {
 }
 
 export default {
-  checkCreateOrder,
+  checkRequiredFields,
   checkIdParam
 };

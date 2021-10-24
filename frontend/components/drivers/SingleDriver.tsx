@@ -1,4 +1,4 @@
-import useData from '../utils/useData';
+import useData from '../../utils/useData';
 
 type Props = {
   id: string

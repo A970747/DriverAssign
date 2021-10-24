@@ -2,64 +2,91 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Order_1 = require("../models/Order");
 class OrderController {
-    async getAllOrders(req, res) {
+    async getAllOrders(req, res, next) {
         try {
+            const { id } = req.params;
             const record = await Order_1.Order.findAll();
-            return res.status(200).json(record);
+            if (record) {
+                res.json(record);
+            }
+            else {
+                res.status(500).json({ message: "Unable to get all orders", status: 500, route: "api/Orders" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Unable to get all Orders", status: 500, route: "api/Orders" });
+            next(e);
         }
     }
-    async getSingleOrder(req, res) {
+    async getSingleOrder(req, res, next) {
         try {
             const { id } = req.params;
             const record = await Order_1.Order.findOne({ where: { id } });
-            return res.json(record);
+            if (record) {
+                res.json(record);
+            }
+            else {
+                res.status(404).json({ message: "Order does not exist", status: 404, route: "api/Orders" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Unable to get Order", status: 500, route: "api/Orders/:id" });
+            next(e);
         }
     }
-    async addOrder(req, res) {
+    async addOrder(req, res, next) {
         try {
             const record = await Order_1.Order.create({ ...req.body });
-            return res.status(201).json(record);
+            if (record) {
+                res.status(201).json(record);
+            }
+            else {
+                res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Failed to create Order", status: 500, route: "api/Orders" });
+            next(e);
         }
     }
-    async updateOrder(req, res) {
+    async updateOrder(req, res, next) {
         try {
             const { id } = req.params;
             const record = await Order_1.Order.findOne({ where: { id } });
             if (!record) {
-                return res.status(404).json({ message: `Can not find Order with id: ${id}` });
+                return res.status(404).json({ message: `Can not find order with id: ${id}` });
             }
             const updatedRecord = await record.update({ ...req.body });
-            return res.json({ record: updatedRecord });
+            if (updatedRecord) {
+                res.json({ record: updatedRecord });
+            }
+            else {
+                res.status(500).json({ method: "PUT", message: "Unable to update", status: 500, route: "api/orders/:id" });
+            }
         }
         catch (e) {
-            return res.status(500).json({ message: "Unable to update", status: 500, route: "api/Orders/:id" });
+            next(e);
         }
     }
-    async deleteOrder(req, res) {
+    async deleteOrder(req, res, next) {
         try {
             const { id } = req.params;
             const record = await Order_1.Order.findOne({ where: { id } });
             if (!record) {
-                return res.status(404).json({ message: `Can not find Order with id: ${id}` });
+                return res.status(404).json({ message: `Can not find order with id: ${id}` });
             }
             const deletedRecord = await record.destroy();
-            return res.status(204).json({ record: deletedRecord });
+            if (deletedRecord) {
+                res.status(204).json({ record: deletedRecord });
+            }
+            else {
+                return res.status(500).json({
+                    method: "PUT",
+                    message: "Unable to delete",
+                    route: "api/orders/:id",
+                    status: 500
+                });
+            }
         }
         catch (e) {
-            return res.status(500).json({
-                message: "Unable to delete",
-                status: 500,
-                route: "api/Orders/:id",
-            });
+            next(e);
         }
     }
 }

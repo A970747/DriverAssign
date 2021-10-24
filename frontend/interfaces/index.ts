@@ -2,26 +2,20 @@
 // and then use them in any component by importing them. For
 // example, to import the interface below do:
 //
-// import { User } from 'path/to/interfaces';
 
 import { DropResult } from 'react-beautiful-dnd';
 
-export type User = {
-  id: number
-  name: string
-}
-
-export type Order = {
+export interface Order {
   description: string,
-  cost: number,
-  distance: number,
+  cost: number | null,
+  distance: number | null,
   driver: number | null,
   endCity: string,
   endProv: string,
   endCountry: string,
   endDate: string,
-  id: number,
-  revenue: number,
+  id?: number,
+  revenue: number | null,
   startCity: string,
   startProv: string,
   startCountry: string,
@@ -37,4 +31,10 @@ export type Driver = {
 
 export type DropHelper = {
   dropHelper: (a: DropResult) => void
+}
+
+export interface eventTargetValues {
+  name: string,
+  type: string,
+  value: string | number
 }

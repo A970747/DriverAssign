@@ -1,5 +1,5 @@
-import { Driver } from '../interfaces';
-import useData from '../utils/useData';
+import { Driver } from '../../interfaces';
+import useData from '../../utils/useData';
 import SingleDriver from './DriversCard';
 
 const Drivers = () => {

@@ -1,7 +1,7 @@
 import express from 'express';
 import DriverController from '../controllers/DriverController';
 import { handleValidationError } from '../utils/middleware';
-import DriverValidator from '../validators/DriverValidator';
+import { checkIdParam, checkRequiredFields } from '../validators/DriverValidator';
 
 const DriverRouter = express.Router();
 
@@ -12,28 +12,28 @@ DriverRouter.get(
 
 DriverRouter.get(
   '/:id',
-  DriverValidator.checkIdParam(),
+  checkIdParam(),
   handleValidationError,
   DriverController.getSingleDriver
 );
 
 DriverRouter.post(
   '/',
-  DriverValidator.checkCreateDriver(),
+  checkRequiredFields(),
   handleValidationError,
   DriverController.addDriver
 );
 
 DriverRouter.put(
   '/:id',
-  DriverValidator.checkIdParam(),
+  checkIdParam(),
   handleValidationError,
   DriverController.updateDriver
 );
 
 DriverRouter.delete(
   '/:id',
-  DriverValidator.checkIdParam(),
+  checkIdParam(),
   handleValidationError,
   DriverController.deleteDriver
 );

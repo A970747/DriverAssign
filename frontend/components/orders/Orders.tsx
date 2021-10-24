@@ -1,5 +1,5 @@
-import { Order } from '../interfaces';
-import useData from '../utils/useData';
+import { Order } from '../../interfaces';
+import useData from '../../utils/useData';
 import SingleOrder from './OrderCard';
 
 const Orders = () => {
@@ -11,7 +11,7 @@ const Orders = () => {
 
   return (
     <div>
-      <div className="hidden md:grid grid-cols-10 justify-around gap-2 border-b-2 border-black p-2">
+      <div className="hidden md:grid grid-cols-10 justify-items-center gap-2 border-b-2 border-black p-2">
         <p className="justify-self-center">OrderID</p>
         <p>DriverID</p>
         <p>Start City</p>

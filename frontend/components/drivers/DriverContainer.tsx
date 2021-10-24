@@ -1,4 +1,4 @@
-import { Driver } from '../interfaces';
+import { Driver } from '../../interfaces';
 
 type Props = {
   driver: Driver

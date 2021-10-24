@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkIdParam = exports.checkCreateDriver = void 0;
+exports.checkIdParam = exports.checkRequiredFields = void 0;
 const express_validator_1 = require("express-validator");
-function checkCreateDriver() {
+function checkRequiredFields() {
     return [
         (0, express_validator_1.body)('firstName')
             .notEmpty()
@@ -15,7 +15,7 @@ function checkCreateDriver() {
             .withMessage('Driver full name is required.'),
     ];
 }
-exports.checkCreateDriver = checkCreateDriver;
+exports.checkRequiredFields = checkRequiredFields;
 function checkIdParam() {
     return [
         (0, express_validator_1.param)('id')
@@ -27,6 +27,6 @@ function checkIdParam() {
 }
 exports.checkIdParam = checkIdParam;
 exports.default = {
-    checkCreateDriver,
+    checkRequiredFields,
     checkIdParam
 };

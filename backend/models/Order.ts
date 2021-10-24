@@ -3,22 +3,22 @@ import db from '../config/db';
 
 interface OrderAttributes extends Model {
   description: string,
-  /* cost: number,
-  distance: number, */
+  cost: number,
+  distance: number,
   driver: number | null,
   endCity: string,
   endProv: string,
   endCountry: string
   endDate: string,
   id: number,
-  /* revenue: number,
+  revenue: number,
   startCity: string,
   startProv: string,
-  startCountry: string, */
+  startCountry: string,
   startDate: string,
 }
 
-type OrderAttributesStatic = typeof Model & (new(values?: object, options?: BuildOptions) => any);
+type OrderAttributesStatic = typeof Model & (new (values?: object, options?: BuildOptions) => any);
 
 export const Order = db.define('Order',
   {

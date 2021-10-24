@@ -1,5 +1,5 @@
 import format from 'date-fns/format';
-import { Order } from '../interfaces';
+import { Order } from '../../interfaces';
 
 type Props = {
   order: Order,

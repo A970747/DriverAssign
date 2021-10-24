@@ -1,4 +1,4 @@
-import { SingleOrder } from '../../components/SingleOrder';
+import { SingleOrder } from '../../components/orders/SingleOrder';
 
 type Props = {
   query: {
