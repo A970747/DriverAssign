@@ -7,6 +7,7 @@ type Props = {
   id: string
 }
 
+<<<<<<< HEAD
 interface edit {
   edit: boolean
 }
@@ -16,13 +17,20 @@ interface setEdit {
   message: string,
 }
 
+=======
+>>>>>>> updates
 export const SingleOrder = ({ id }: Props) => {
   const { data: order, isLoading, isError } = useData('orders', id);
   const [edit, setEdit] = useState(false)
 
+<<<<<<< HEAD
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>{isError}</p>;
+=======
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Unable to load order data.</p>;
+>>>>>>> updates
   return (
     <div>
       {

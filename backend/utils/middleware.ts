@@ -15,7 +15,7 @@ export const handleValidationError = (req: Request, res: Response, next: NextFun
   const error = validationResult(req);
 
   if (!error.isEmpty()) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
   }
 
   next();

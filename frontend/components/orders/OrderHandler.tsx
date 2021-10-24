@@ -68,7 +68,10 @@ export default function OrderHandler({ order = orderFields, action, setEdit }: P
         setInputs(formatInputs(inputs));
         try {
           await updateOrder(id, inputs);
+<<<<<<< HEAD
           console.log(inputs);
+=======
+>>>>>>> updates
           setInFlight(false);
           setEdit(false);
         } catch (e) {

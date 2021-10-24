@@ -37,4 +37,16 @@ export interface eventTargetValues {
   name: string,
   type: string,
   value: string | number
+<<<<<<< HEAD
+=======
+}
+
+export interface edit {
+  edit: boolean
+}
+
+export interface setEdit {
+  success: boolean,
+  message: string,
+>>>>>>> updates
 }

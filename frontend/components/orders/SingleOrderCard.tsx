@@ -12,7 +12,11 @@ export const SingleOrderCard = ({ id, edit, setEdit }: Props) => {
   const { data: order, isLoading, isError } = useData('orders', id);
 
   if (isLoading) return <p>Loading...</p>;
+<<<<<<< HEAD
   if (isError) return <p>Failed to load</p>;
+=======
+  if (isError) return <p>Unable to load order data.</p>;
+>>>>>>> updates
   return (
     <div>
       <div className="grid grid-cols-3 p-2 justify-items-center">
