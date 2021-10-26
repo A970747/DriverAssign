@@ -38,7 +38,7 @@ export default function Nav() {
           </div>
         </div>
       </div>
-      <div className={`${showMenu ? 'grid' : 'hidden'} p-2 sm:hidden absolute inset-y-16 right-8 bg-white border-2 h-36 rounded-md`} id="mobile-menu">
+      <div className={`${showMenu ? 'grid' : 'hidden'} p-2 sm:hidden absolute inset-y-16 right-8 bg-white border-2 h-36 rounded-md z-10`} id="mobile-menu">
         <Link href="/planning">
           <a className="hover:bg-gray-100 p-2">Planning</a>
         </Link>

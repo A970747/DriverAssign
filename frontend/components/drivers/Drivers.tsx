@@ -19,10 +19,10 @@ const Drivers = () => {
           </a>
         </Link>
       </div>
-      <div className="hidden md:grid grid-cols-10 justify-around gap-2 border-b-2 border-black p-2">
+      <div className="hidden sm:grid justify-start gap-2 border-b-2 border-black p-2">
         <p>Drivers</p>
       </div>
-      <div className="flex flex-initial gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         {
           data.map((driver: Driver) => <DriversCard key={driver.id} driver={driver} />)
         }

@@ -17,14 +17,14 @@ export const SingleDriverCard = ({ id, edit, setEdit }: Props) => {
       <div className="flex flex-col sm:flex-row justify-between items-stretch gap-10 sm:flex-row items-center">
         <div className="flex flex-col justify-between h-full">
           <div className="flex flex-col py-2 px-10 justify-items-center">
-            <img className="rounded-full max-h-32 border-2" src="https://i.pravatar.cc/300" alt="Random driver avatar" />
+            <img className="rounded-full sm:max-h-36 border-2" src="https://i.pravatar.cc/300" alt="Random driver avatar" />
             <p className="text-xl">{data.fullName}</p>
             <p>Fleet</p>
             <p>Home Office</p>
           </div>
           <div className="flex gap-x-2">
             <button className="border-2 border-gray-500 rounded-md w-full py-2 bg-gray-500 text-center text-white text-2xl hover:bg-gray-50 hover:text-gray-500" onClick={() => setEdit(!edit)}>Edit</button>
-            <Link href={`/orders`}>
+            <Link href={`/drivers`}>
               <a className="border-2 border-gray-500 rounded-md bg-gray-500 py-2 w-full text-center text-white text-2xl hover:bg-gray-50 hover:text-gray-500">
                 Back
               </a>

@@ -2,7 +2,7 @@ import { PlusIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { Order, reducerTotals } from '../../interfaces';
 import useData from '../../utils/useData';
-import SingleOrder from './OrderCard';
+import OrderCard from './OrderCard';
 
 const Orders = () => {
   //todo Add , { refreshInterval: 5 } to useSWR to get data refreshing every 5 seconds to simulate closer to real time.
@@ -40,7 +40,7 @@ const Orders = () => {
       </div>
       {
         data.map((order: Order) => {
-          return <SingleOrder key={order.id} order={order} />;
+          return <OrderCard key={order.id} order={order} />;
         })
       }
       {

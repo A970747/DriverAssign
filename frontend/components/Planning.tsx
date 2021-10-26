@@ -34,7 +34,7 @@ const Planning = () => {
                 <span className="text-center text-2xl underline">Unassigned Orders</span>
                 {
                   orders.data.filter((order: Order) => !order.driver).map((order: Order, index: number) => {
-                    return <Draggable key={order.id} index={order.id} draggableId={order.id.toString()} >
+                    return <Draggable key={order.id} index={index} draggableId={order.id.toString()} >
                       {
                         (provided, snapshot) => (
                           <div className="border-2 hover:border-gray-300 bg-purple-50 hover:shadow rounded-md" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>

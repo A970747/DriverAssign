@@ -39,9 +39,11 @@ export default function useDropHelper() {
       const updatedId = (destination.droppableId == 'unassigned') ? null : parseInt(destination.droppableId);
       const updatedOrder = { ...order, driver: updatedId };
 
-      await updateOrder(order.id, updatedOrder);
-    } else {
-      throw new Error('Error getting data for order')
+      try {
+        await updateOrder(order.id, updatedOrder);
+      } catch (e) {
+        throw new Error(e)
+      }
     }
   };
 

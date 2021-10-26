@@ -17,7 +17,7 @@ const OrderCard = ({ order }: Props) => {
 
   return (
     <div className="my-2 hover:shadow-md hover:bg-gray-50">
-      <div className="border-2 border-gray-500 rounded md:grid md:grid-cols-11">
+      <div className="flex flex-col border-2 border-gray-500 rounded md:grid md:grid-cols-11">
         <Link href={`/orders/${order.id}`}>
           <a className="flex col-span-10 flex-col justify-items-center items-center gap-2  p-2 md:grid md:grid-cols-10">
             <p><span className="inline md:hidden">OrderID: </span>{order.id}</p>
@@ -31,7 +31,7 @@ const OrderCard = ({ order }: Props) => {
             <p className="text-red-500"><span className="inline md:hidden">Cost: </span>$ {order.cost}</p>
           </a>
         </Link>
-        <button className="justify-self-center" onClick={handleDelete}>
+        <button className="self-center justify-self-center py-2 sm:py-0" onClick={handleDelete}>
           <TrashIcon className="h-8 w-8 p-1 bg-white rounded-full border-2 hover:text-gray-500 hover:bg-gray-100 hover:border-gray-500" />
         </button>
       </div>
