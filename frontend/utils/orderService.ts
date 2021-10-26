@@ -1,7 +1,7 @@
 import { mutate } from 'swr';
 import { Order } from '../interfaces';
 
-const baseUrl = (!(process.env.NODE_ENV === 'development')) ? 'http://localhost:3333/api/orders' : 'https://driver-assign-sppw9.ondigitalocean.app/api/orders'
+const baseUrl = ((process.env.NODE_ENV === 'development')) ? 'http://localhost:3333/api/orders' : 'https://driver-assign-sppw9.ondigitalocean.app/api/orders'
 
 /**
 * Handles the CRUD operations for all the order related API calls.

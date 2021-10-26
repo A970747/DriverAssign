@@ -24,7 +24,7 @@ export default function useData(endpoint = '', id = '') {
 
   //! switch this back when devving off locally hosted api
   // Builds the key that is piped to fetcher in the useSWR call.
-  const apiURI = (!(process.env.NODE_ENV === 'development')) ? 'http://localhost:3333/api' : 'https://driver-assign-sppw9.ondigitalocean.app/api'
+  const apiURI = ((process.env.NODE_ENV === 'development')) ? 'http://localhost:3333/api' : 'https://driver-assign-sppw9.ondigitalocean.app/api'
   const key = id ? `${apiURI}/${endpoint}/${id}` : `${apiURI}/${endpoint}`;
   const { data, error } = useSWR(key, fetcher);
 
