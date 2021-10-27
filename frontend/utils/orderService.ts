@@ -43,7 +43,6 @@ export const createOrder = async (order: Order) => {
 
 export const updateOrder = async (id: number, updatedOrder: Order) => {
   mutate(`${baseUrl}/${id}`, () => ({ ...updatedOrder }), false);
-
   // Optimistically update the cached values in SWR with the updated data.
   mutate(`${baseUrl}`, ((data: Order[]) => {
     return data.map(order => {
@@ -59,7 +58,6 @@ export const updateOrder = async (id: number, updatedOrder: Order) => {
     },
     body: JSON.stringify(updatedOrder),
   });
-
   mutate(`/${baseUrl}/${id}`);
   mutate(`${baseUrl}`);
 

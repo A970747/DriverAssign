@@ -9,12 +9,13 @@ const Orders = () => {
   const { data, isError, isLoading } = useData('orders');
 
   if (isError) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <div>loading...</div>;;
 
   const totals = data.reduce((prev: reducerTotals, curr: Order, i: number): reducerTotals => {
-    prev.totalRev = prev.totalRev + (curr.revenue) ? curr.revenue : 0;
-    prev.totalCost = prev.totalCost + (curr.cost) ? curr.cost : 0;
-    return prev;
+    return {
+      totalRev: prev.totalRev + ((curr.revenue) ? curr.revenue : 0),
+      totalCost: prev.totalCost + ((curr.cost) ? curr.cost : 0)
+    };
   }, { totalRev: 0, totalCost: 0 })
 
   return (
