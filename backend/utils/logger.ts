@@ -1,9 +1,10 @@
 const infoMessage = (...params: any) => {
-  console.log(...params);
+  if (!(process.env.NODE_ENV === 'test')) console.log(...params);
 };
 
 const errorMessage = (...params: any) => {
-  console.error(...params);
+  //todo disable this if mode is test.
+  if (!(process.env.NODE_ENV === 'test')) console.error(...params);
 };
 
 export default {
