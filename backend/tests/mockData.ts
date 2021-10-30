@@ -111,3 +111,34 @@ export const singleOrderUpdate: Order = {
   startDate: "2021-10-15T11:00:00.000Z",
   startProv: "MB",
 }
+
+export const orderNoStartDate = {
+  cost: 500,
+  description: "Updated description",
+  distance: 250,
+  driver: 1,
+  endCity: "UpdateCity",
+  endCountry: "USA",
+  endDate: "2021-10-15T11:00:00.000Z",
+  endProv: "MA",
+  revenue: 2000,
+  startCity: "Winnipeg",
+  startCountry: "CA",
+  startProv: "MB",
+}
+
+export const orderIncorrectDistanceType = {
+  cost: 500,
+  description: "Updated description",
+  distance: "250",
+  driver: 1,
+  endCity: "UpdateCity",
+  endCountry: "USA",
+  endDate: "2021-10-15T11:00:00.000Z",
+  endProv: "MA",
+  revenue: 2000,
+  startCity: "Winnipeg",
+  startCountry: "CA",
+  startDate: null,
+  startProv: "MB",
+}
