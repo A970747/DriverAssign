@@ -32,8 +32,6 @@ None! The full working app, connected to the live DB can be used here: https://d
 
 If you want to run the app locally you can do the following:
 
-_FROM ROOT:
-
 1. Install Node(https://nodejs.org/en/download/)
 
 2. Install NPM
