@@ -18,6 +18,23 @@ export const driverData: Driver[] = [
   },
 ]
 
+export const singleDriverUpdate: Driver = {
+  firstName: "Bobby",
+  lastName: "Murphy",
+  fullName: "Eddie Murphy"
+}
+
+export const driverNoFirstName = {
+  lastName: "Murphy",
+  fullName: "Eddie Murphy"
+}
+
+export const driverIncorrectType = {
+  firstName: 1,
+  lastName: "Murphy",
+  fullName: "Eddie Murphy"
+}
+
 export const orderData: Order[] = [
   {
     cost: 1000,
