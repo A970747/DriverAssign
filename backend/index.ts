@@ -2,7 +2,7 @@ import app from "./app";
 import db from "./config/db";
 import { Driver } from "./models/Driver";
 import { Order } from "./models/Order";
-import { driverData, orderData } from "./utils/mockData";
+import { driverData, orderData } from "./tests/mockData";
 
 // use db.authenticate when this goes to postgres
 if (process.env.NODE_ENV === 'production') {
@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === 'production') {
       }))
     .catch(() => console.error('Unable to connect to the PG database:'))
 
-} else {
+}
+if (process.env.NODE_ENV === 'development') {
   db.sync({ force: true })
     .then(async () => {
       console.log("Connected to DB");

@@ -4,7 +4,6 @@ import { Order } from "../models/Order";
 class OrderController {
   async getAllOrders(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = req.params;
       const record = await Order.findAll();
 
       if (record) {
