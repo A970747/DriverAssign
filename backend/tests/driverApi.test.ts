@@ -98,7 +98,6 @@ describe("Exception and error handling", () => {
 
   test("Should error on incorrect type", async () => {
     const res = await api.post('/api/drivers/').send(driverIncorrectType);
-    console.log(res.body);
 
     expect(500);
     expect(res.body).toMatchObject({
